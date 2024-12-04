@@ -6,7 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "RoadTileGridSlot.generated.h"
 
-class RoadTile;
+class ARoadTile;
 
 UCLASS()
 class PROJETVR_TEAM8_API ARoadTileGridSlot : public AActor
@@ -32,7 +32,9 @@ public:
 public:
 	void SetSlotPosition(FVector NewPosition);
 
-	void ChangeCurrentRoadTile(RoadTile* newRoadTile);
+	void ChangeCurrentRoadTile(ARoadTile* newRoadTile);
 	
-	RoadTile* CurrentRoadTile;
+	ARoadTile* CurrentRoadTile;
+
+	float GetTileWidth();
 };

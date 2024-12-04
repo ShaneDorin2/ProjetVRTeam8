@@ -16,7 +16,12 @@ ARoadTileGridSlot::ARoadTileGridSlot()
 void ARoadTileGridSlot::BeginPlay()
 {
 	Super::BeginPlay();
+
+	FActorSpawnParameters SpawnParameters;
+	SpawnParameters.Owner = this;
 	
+	ARoadTile* RoadTile = GetWorld()->SpawnActor<ARoadTile>(ARoadTile::StaticClass(), SpawnParameters);
+	ChangeCurrentRoadTile(RoadTile);
 }
 
 // Called every frame
@@ -30,8 +35,13 @@ void ARoadTileGridSlot::SetSlotPosition(FVector NewPosition)
 	this->SetActorLocation(NewPosition);
 }
 
-void ARoadTileGridSlot::ChangeCurrentRoadTile(RoadTile* newRoadTile)
+void ARoadTileGridSlot::ChangeCurrentRoadTile(ARoadTile* newRoadTile)
 {
 	CurrentRoadTile = newRoadTile;
+}
+
+float ARoadTileGridSlot::GetTileWidth()
+{
+	return CurrentRoadTile->GetComponentsBoundingBox().GetExtent().X *2;
 }
 

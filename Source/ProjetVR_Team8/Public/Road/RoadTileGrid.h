@@ -29,25 +29,35 @@ public:
 #pragma endregion
 
 
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float MovementSpeed = 10;
 	
 private:
 
 	void InitRoadTileGridSlots();
 
-	void UpdateSlotPositions();
-	
-	bool HasPrimeSlotChanged();
-	
-	void SetPrimeSlotIndex(int newSlotIndex);
+	void UpdateSlotPositions(float DeltaTime);
 
+	bool PrimeSlotIsNotInPrimeSlotPosition();
+	
+	void AssignNewPrimeSlot();
+
+	bool IsSlotInPrimeSlotPosition(const FVector& SlotPosition);
+	
 	void DespawnOldTileAndSpawnNewTile();
+
+	FVector GetNewSlotLocation();
 
 	TArray<ARoadTileGridSlot*> RoadTileGridSlots;
 	TQueue<int> SlotIndexQueue[3];
 	int PrimeSlotIndex;
+
+	float TileWidth;
 	
 	FVector MovementDirection = FVector(1, 0, 0);
-	float MovementSpeed = 10;
+	
+	
 
 	
 	
@@ -62,7 +72,6 @@ private:
 	 * Tick:
 	 *		Move all slots in the direction / speed.
 	 *		if primeSlot.pos = +- tile width/2:
-	 *			primeSlotIndex = currentPrimeSlotIndex + 1 (or 0 if >2)
 	 *			POP oldest slot from queue.
 	 *			Change position of slop (based on pos of LATEST slot) (0, LATEST + x)
 	 *			ADD poped slot onto queue. 
