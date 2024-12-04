@@ -7,9 +7,10 @@
 #include "RoadTile.generated.h"
 
 UCLASS()
-class PROJETVR_TEAM8_API ARoadTile : public APawn
+class PROJETVR_TEAM8_API ARoadTile : public AActor
 {
 	GENERATED_BODY()
+	
 #pragma region Unreal Default
 	
 public:
@@ -25,15 +26,15 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 #pragma endregion
 	
 private:
-	void ApplyMovementInputToPawn(float DeltaTime);
+	void ApplyMovement(FVector direction, float Speed, float DeltaTime);
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MovementSpeed = 10;
 };
+
+

@@ -18,7 +18,7 @@ ARoadTile::ARoadTile()
 void ARoadTile::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
@@ -26,22 +26,14 @@ void ARoadTile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	this->AddMovementInput(FVector(1, 0, 0), 10);
-	ApplyMovementInputToPawn(DeltaTime);
+	ApplyMovement(FVector(1, 0, 0), MovementSpeed, DeltaTime);
+
 }
 
-// Called to bind functionality to input
-void ARoadTile::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void ARoadTile::ApplyMovement(FVector direction, float Speed, float DeltaTime)
 {
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-}
-
-void ARoadTile::ApplyMovementInputToPawn(float DeltaTime)
-{
-	FVector AddToLocation = this->GetLastMovementInputVector() * MovementSpeed * DeltaTime;
-
-	FVector NewLocation = AddToLocation;
-	
-	this->SetActorLocation(this->GetActorLocation() + NewLocation);
+	FVector CurrentLocation = GetActorLocation();
+	CurrentLocation += direction * Speed * DeltaTime;
+	SetActorLocation(CurrentLocation);
 }
 
