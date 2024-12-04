@@ -2,6 +2,7 @@
 
 
 #include "Road/RoadTileGridSlot.h"
+#include "Road/RoadTile.h"
 
 
 // Sets default values
@@ -22,5 +23,15 @@ void ARoadTileGridSlot::BeginPlay()
 void ARoadTileGridSlot::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+void ARoadTileGridSlot::SetSlotPosition(FVector NewPosition)
+{
+	this->SetActorLocation(NewPosition);
+}
+
+void ARoadTileGridSlot::ChangeCurrentRoadTile(RoadTile* newRoadTile)
+{
+	CurrentRoadTile = newRoadTile;
 }
 

@@ -26,7 +26,7 @@ void ARoadTile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	ApplyMovement(FVector(1, 0, 0), MovementSpeed, DeltaTime);
+	//ApplyMovement(FVector(1, 0, 0), MovementSpeed, DeltaTime);
 
 }
 

@@ -6,12 +6,14 @@
 #include "GameFramework/Actor.h"
 #include "RoadTileGridSlot.generated.h"
 
+class RoadTile;
+
 UCLASS()
 class PROJETVR_TEAM8_API ARoadTileGridSlot : public AActor
 {
 	GENERATED_BODY()
 
-	
+#pragma region Unreal Defaults
 public:
 	// Sets default values for this actor's properties
 	ARoadTileGridSlot();
@@ -23,4 +25,14 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+#pragma endregion
+
+
+public:
+	void SetSlotPosition(FVector NewPosition);
+
+	void ChangeCurrentRoadTile(RoadTile* newRoadTile);
+	
+	RoadTile* CurrentRoadTile;
 };
