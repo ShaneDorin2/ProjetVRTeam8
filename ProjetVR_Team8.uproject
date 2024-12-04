@@ -54,6 +54,14 @@
 				"Win64",
 				"Android"
 			]
+		},
+		{
+			"Name": "OculusPlatform",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Win64",
+				"Android"
+			]
 		}
 	],
 	"TargetPlatforms": [
