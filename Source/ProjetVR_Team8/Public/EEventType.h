@@ -2,8 +2,12 @@
 #include "CoreMinimal.h"
 #include "EEventType.generated.h"
 
-UENUM(BlueprintType)
+UENUM()
 enum EEventType
 {
-	UnlockDoors
+	UnlockDoors,
+	LightFlicker,
+	RadioBug,
+	RoadAppearance,
+	RoadTurn
 };

@@ -1,9 +1,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "FEventInfo.h"
 #include "Engine/DataAsset.h"
 #include "SequenceEventData.generated.h"
+
+struct FEventInfo;
 
 UCLASS()
 class PROJETVR_TEAM8_API USequenceEventData : public UDataAsset
@@ -17,6 +18,7 @@ public:
 	enum EEventType
 	{
 		WaitForTime
+		//SequenceData = StartData   Sequence Data
 	};
 };
 
