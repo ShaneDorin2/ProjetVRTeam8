@@ -37,4 +37,7 @@ public:
 	ARoadTile* CurrentRoadTile;
 
 	float GetTileWidth();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<ARoadTile> RoadTileBP;
 };

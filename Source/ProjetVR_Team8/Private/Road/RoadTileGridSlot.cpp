@@ -20,7 +20,8 @@ void ARoadTileGridSlot::BeginPlay()
 	FActorSpawnParameters SpawnParameters;
 	SpawnParameters.Owner = this;
 	
-	ARoadTile* RoadTile = GetWorld()->SpawnActor<ARoadTile>(ARoadTile::StaticClass(), SpawnParameters);
+	ARoadTile* RoadTile = GetWorld()->SpawnActor<ARoadTile>(RoadTileBP, SpawnParameters);
+	RoadTile->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
 	ChangeCurrentRoadTile(RoadTile);
 }
 

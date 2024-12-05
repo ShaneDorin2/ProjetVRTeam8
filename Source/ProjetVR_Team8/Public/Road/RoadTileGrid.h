@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "RoadTile.h"
 #include "GameFramework/Actor.h"
 #include "RoadTileGrid.generated.h"
 
@@ -31,7 +32,11 @@ public:
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<ARoadTileGridSlot> RoadTileGridSlotBP;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MovementSpeed = 10;
+	
 	
 private:
 

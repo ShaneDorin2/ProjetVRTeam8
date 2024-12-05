@@ -41,9 +41,10 @@ void ARoadTileGrid::InitRoadTileGridSlots()
 	{
 		FActorSpawnParameters SpawnParameters;
 		SpawnParameters.Owner = this;
+		SpawnParameters.Instigator = GetInstigator();
 
-		ARoadTileGridSlot* RoadTileGridSlot = GetWorld()->SpawnActor<ARoadTileGridSlot>(ARoadTileGridSlot::StaticClass(), SpawnParameters);
-		//RoadTileGridSlot->SetActorLocation(FVector(i, 0, 0));
+		ARoadTileGridSlot* RoadTileGridSlot = GetWorld()->SpawnActor<ARoadTileGridSlot>(RoadTileGridSlotBP, SpawnParameters);
+		RoadTileGridSlot->AttachToActor(this,FAttachmentTransformRules::KeepRelativeTransform);
 		RoadTileGridSlots.Add(RoadTileGridSlot);
 		SlotIndexQueue->Enqueue(i);
 	}
@@ -96,7 +97,7 @@ void ARoadTileGrid::DespawnOldTileAndSpawnNewTile()
 
 FVector ARoadTileGrid::GetNewSlotLocation()
 {
-	return RoadTileGridSlots[PrimeSlotIndex]->GetActorLocation() + MovementDirection * TileWidth;
+	return RoadTileGridSlots[PrimeSlotIndex]->GetActorLocation() - MovementDirection * TileWidth;
 }
 
 
