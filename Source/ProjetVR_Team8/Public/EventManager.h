@@ -23,14 +23,21 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TObjectPtr<USequenceEventData> TimelineA;
 	
-	TArray<FEventInfo> Events;
+	TArray<TObjectPtr<UEventInfoClass>> Events;
 
 public:
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 private:
 	float TimeElapsed;
-	void ChangeTimeline (USequenceEventData* EventData);
+	float CurrentTimelineElapsed;
+	void ChangeTimeline (USequenceEventData* NewTimeline);
+	
+	TObjectPtr<USequenceEventData> CurrentTimeline;
+	bool ValidateNextTimeline;
+
+	UFUNCTION()
+	void OnReboot();
 };
 

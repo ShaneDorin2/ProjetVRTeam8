@@ -5,9 +5,10 @@
 UENUM()
 enum EEventType
 {
-	UnlockDoors,
-	LightFlicker,
-	RadioBug,
-	RoadAppearance,
-	RoadTurn
+	UnlockDoors = 0,
+	LightFlicker = 1,
+	RadioBug = 2,
+	RoadAppearance = 3,
+	RoadTurn = 4,
+	CarTalk = 5
 };

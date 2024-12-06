@@ -4,7 +4,9 @@
 #include "Engine/DataAsset.h"
 #include "SequenceEventData.generated.h"
 
-struct FEventInfo;
+class UEventInfoClass;
+// struct FEventInfoCarTalk;
+// struct FEventInfo;
 
 UCLASS()
 class PROJETVR_TEAM8_API USequenceEventData : public UDataAsset
@@ -12,13 +14,19 @@ class PROJETVR_TEAM8_API USequenceEventData : public UDataAsset
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere)
-	TArray<FEventInfo> Events;
+	UPROPERTY(Instanced, EditAnywhere)
+	TArray<UEventInfoClass*> Events;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TObjectPtr<USequenceEventData> NextTimeline;
 	
-	enum EEventType
-	{
-		WaitForTime
-		//SequenceData = StartData   Sequence Data
-	};
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TObjectPtr<USequenceEventData> TimelineB;
+
+	UPROPERTY(EditAnywhere)
+	bool IsClimaxTimeline;
+
+	UPROPERTY(EditAnywhere)
+	float TimelineDuration;
 };
 
