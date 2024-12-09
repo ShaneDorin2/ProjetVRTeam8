@@ -31,10 +31,21 @@ public:
 	
 private:
 	void ApplyMovement(FVector direction, float Speed, float DeltaTime);
-
+	
+	AActor* SignSpawnLocation;
+	
 public:
+	UFUNCTION(blueprintCallable)
+	void SpawnSign();
+
+	UFUNCTION(blueprintCallable)
+	void DespawnSign();
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MovementSpeed = 10;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh* SignMesh;
 };
 
 

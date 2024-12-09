@@ -61,25 +61,10 @@ private:
 	float TileWidth;
 	
 	FVector MovementDirection = FVector(1, 0, 0);
-	
-	
+
+#pragma region Spawn Object on RoadTile
 
 	
-	
-	/*
-	 * init:
-	 *		create 3 slots (each slot creates their own tile)
-	 *		Add the 3 slots into the array [this gives them their index/id]
-	 *		Set the 3 slot positions based on tile size/x  (0, 0), (0, x), (0, -x)
-	 *		set up queue of idexes (0, 1, 2)
-	 *		set up primeSlot index (1)
-	 *
-	 * Tick:
-	 *		Move all slots in the direction / speed.
-	 *		if primeSlot.pos = +- tile width/2:
-	 *			POP oldest slot from queue.
-	 *			Change position of slop (based on pos of LATEST slot) (0, LATEST + x)
-	 *			ADD poped slot onto queue. 
-	 *
-	 */
+
+#pragma endregion 
 };
