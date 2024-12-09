@@ -1,7 +1,7 @@
 #include "EventManager.h"
-
-#include "EventManagerSubSystem.h"
-#include "SequenceEventData.h"
+#include "EventManager/EventManager.h"
+#include "EventManager/EventManagerSubSystem.h"
+#include "EventManager/SequenceEventData.h"
 
 
 AEventManager::AEventManager()
