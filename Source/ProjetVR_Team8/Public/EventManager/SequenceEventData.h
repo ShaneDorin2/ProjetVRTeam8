@@ -5,8 +5,6 @@
 #include "SequenceEventData.generated.h"
 
 class UEventInfoClass;
-// struct FEventInfoCarTalk;
-// struct FEventInfo;
 
 UCLASS()
 class PROJETVR_TEAM8_API USequenceEventData : public UDataAsset

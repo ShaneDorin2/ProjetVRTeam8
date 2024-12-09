@@ -1,7 +1,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "EventSettings.h"
 #include "EventEnums.h"
 #include "Subsystems/WorldSubsystem.h"
 #include "EventManagerSubSystem.generated.h"
