@@ -19,14 +19,15 @@ ARoadTile::ARoadTile()
 void ARoadTile::BeginPlay()
 {
 	Super::BeginPlay();
-	TArray<TObjectPtr<AActor>> Children = this->Children;
-	for (TObjectPtr<AActor> Child : Children)
-	{
-		if (Child.GetName() == "ObjectSpawnLocation")
-		{
-			SignSpawnLocation = Child.Get();
-		}
-	}
+	// TArray<TObjectPtr<AActor>> Children = this->GetAllChildActors();
+	// //TArray<TObjectPtr<AActor>> Children = this->GetAllChildActors();
+	// for (TObjectPtr<AActor> Child : Children)
+	// {
+	// 	if (Child.GetName() == "ObjectSpawnLocation")
+	// 	{
+	// 		SignSpawnLocation = Child.Get();
+	// 	}
+	// }
 }
 
 // Called every frame
