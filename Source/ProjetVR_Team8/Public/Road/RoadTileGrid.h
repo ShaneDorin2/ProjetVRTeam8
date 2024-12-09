@@ -36,7 +36,9 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MovementSpeed = 10;
-	
+
+	UFUNCTION(BlueprintCallable)
+	void QueueRoadsideSign();
 	
 private:
 
@@ -64,7 +66,9 @@ private:
 
 #pragma region Spawn Object on RoadTile
 
-	
+	bool RoadsideSignHasBeenQueued = false;
+
+	void AddRoadsideObjects(ARoadTileGridSlot* TileSlot);
 
 #pragma endregion 
 };

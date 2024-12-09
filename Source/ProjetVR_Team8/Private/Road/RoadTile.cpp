@@ -19,15 +19,14 @@ ARoadTile::ARoadTile()
 void ARoadTile::BeginPlay()
 {
 	Super::BeginPlay();
-	// TArray<TObjectPtr<AActor>> Children = this->GetAllChildActors();
-	// //TArray<TObjectPtr<AActor>> Children = this->GetAllChildActors();
-	// for (TObjectPtr<AActor> Child : Children)
-	// {
-	// 	if (Child.GetName() == "ObjectSpawnLocation")
-	// 	{
-	// 		SignSpawnLocation = Child.Get();
-	// 	}
-	// }
+	TSet<UActorComponent*> Components = this->GetComponents();
+	for (UActorComponent* Component : Components)
+	{
+		if (Component->GetName() == "RoadsideSlot")
+		{
+			RoadsideSlot = Cast<UStaticMeshComponent>(Component);
+		}
+	}
 }
 
 // Called every frame
@@ -44,15 +43,13 @@ void ARoadTile::ApplyMovement(FVector direction, float Speed, float DeltaTime)
 	SetActorLocation(CurrentLocation);
 }
 
-void ARoadTile::SpawnSign()
+void ARoadTile::SpawnSignToRoadsideSlot()
 {
-	UStaticMeshComponent* mesh = SignSpawnLocation->FindComponentByClass<UStaticMeshComponent>();
-	mesh->SetStaticMesh(SignMesh);
+	RoadsideSlot->SetStaticMesh(SignMesh);
 }
 
-void ARoadTile::DespawnSign()
+void ARoadTile::ClearRoadsideSlot()
 {
-	UStaticMeshComponent* mesh = SignSpawnLocation->FindComponentByClass<UStaticMeshComponent>();
-	mesh->SetStaticMesh(nullptr);
+	RoadsideSlot->SetStaticMesh(nullptr);
 }
 

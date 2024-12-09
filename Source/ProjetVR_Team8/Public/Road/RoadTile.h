@@ -32,15 +32,15 @@ public:
 private:
 	void ApplyMovement(FVector direction, float Speed, float DeltaTime);
 	
-	AActor* SignSpawnLocation;
+	UStaticMeshComponent* RoadsideSlot;
 	
 public:
-	UFUNCTION(blueprintCallable)
-	void SpawnSign();
+	UFUNCTION()
+	void SpawnSignToRoadsideSlot();
 
-	UFUNCTION(blueprintCallable)
-	void DespawnSign();
-
+	UFUNCTION()
+	void ClearRoadsideSlot();
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MovementSpeed = 10;
 

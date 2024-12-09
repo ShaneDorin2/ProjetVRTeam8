@@ -38,6 +38,12 @@ public:
 
 	float GetTileWidth();
 
+	UFUNCTION()
+	void AddRoadsideObjectToTile();
+
+	UFUNCTION()
+	void ClearRoadsideSlotsFromTile();
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<ARoadTile> RoadTileBP;
 };

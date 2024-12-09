@@ -35,6 +35,11 @@ void ARoadTileGrid::Tick(float DeltaTime)
 	}
 }
 
+void ARoadTileGrid::QueueRoadsideSign()
+{
+	RoadsideSignHasBeenQueued = true;
+}
+
 void ARoadTileGrid::InitRoadTileGridSlots()
 {
 	for (int i=0; i<3; i++)
@@ -93,11 +98,22 @@ void ARoadTileGrid::DespawnOldTileAndSpawnNewTile()
 	ARoadTileGridSlot* OldestSlot = RoadTileGridSlots[OldestSlotIndex];
 	OldestSlot->SetActorLocation(GetNewSlotLocation());
 	SlotIndexQueue->Enqueue(OldestSlotIndex);
+	AddRoadsideObjects(OldestSlot);
 }
 
 FVector ARoadTileGrid::GetNewSlotLocation()
 {
 	return RoadTileGridSlots[PrimeSlotIndex]->GetActorLocation() - MovementDirection * TileWidth; 
+}
+
+void ARoadTileGrid::AddRoadsideObjects(ARoadTileGridSlot* TileSlot)
+{
+	TileSlot->ClearRoadsideSlotsFromTile();
+	if (RoadsideSignHasBeenQueued)
+	{
+		TileSlot->AddRoadsideObjectToTile();
+		RoadsideSignHasBeenQueued = false;
+	}
 }
 
 
