@@ -97,7 +97,7 @@ void ARoadTileGrid::DespawnOldTileAndSpawnNewTile()
 
 FVector ARoadTileGrid::GetNewSlotLocation()
 {
-	return RoadTileGridSlots[PrimeSlotIndex]->GetActorLocation() - MovementDirection * TileWidth;
+	return RoadTileGridSlots[PrimeSlotIndex]->GetActorLocation() - MovementDirection * TileWidth; 
 }
 
 
