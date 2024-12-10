@@ -22,7 +22,7 @@ void ARoadTile::BeginPlay()
 	TSet<UActorComponent*> Components = this->GetComponents();
 	for (UActorComponent* Component : Components)
 	{
-		if (Component->GetName() == "RoadsideSlot")
+		if (Component->GetName() == "RoadsideObjectStaticMesh")
 		{
 			RoadsideSlot = Cast<UStaticMeshComponent>(Component);
 		}
@@ -45,11 +45,19 @@ void ARoadTile::ApplyMovement(FVector direction, float Speed, float DeltaTime)
 
 void ARoadTile::SpawnSignToRoadsideSlot()
 {
+	if (RoadsideSlot == nullptr)
+	{
+		return;
+	}
 	RoadsideSlot->SetStaticMesh(SignMesh);
 }
 
 void ARoadTile::ClearRoadsideSlot()
 {
+	if (RoadsideSlot == nullptr)
+	{
+		return;
+	}
 	RoadsideSlot->SetStaticMesh(nullptr);
 }
 
