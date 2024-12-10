@@ -45,11 +45,11 @@ void ARoadTile::ApplyMovement(FVector direction, float Speed, float DeltaTime)
 
 void ARoadTile::SpawnSignToRoadsideSlot()
 {
-	RoadsideSlot->SetStaticMesh(SignMesh);
+	//RoadsideSlot->SetStaticMesh(SignMesh);
 }
 
 void ARoadTile::ClearRoadsideSlot()
 {
-	RoadsideSlot->SetStaticMesh(nullptr);
+	//RoadsideSlot->SetStaticMesh(nullptr);
 }
 
