@@ -1,6 +1,7 @@
 #include "SteeringWheelComponent.h"
 #include "HandGrabState.h"
 #include "MotionControllerInfo.h"
+#include "EventManager/GameManager.h"
 
 
 USteeringWheelComponent::USteeringWheelComponent()
@@ -41,12 +42,16 @@ void USteeringWheelComponent::Ungrab(USceneComponent* Controller, USceneComponen
 
 void USteeringWheelComponent::UpdateHandGrabState()
 {
+	UGameManager* gm = GetWorld()->GetSubsystem<UGameManager>();
+	if(gm == nullptr)
+		return;
+	
 	if(IsGrabbedLeft && IsGrabbedRight)
-		CurrentHandState = EHandGrabState::TWO_HANDS;
+		gm->CurrentHandState = EHandGrabState::TWO_HANDS;
 	else if(IsGrabbedLeft || IsGrabbedRight)
-		CurrentHandState = EHandGrabState::ONE_HAND;
+		gm->CurrentHandState = EHandGrabState::ONE_HAND;
 	else
-		CurrentHandState = EHandGrabState::NO_HAND;
+		gm->CurrentHandState = EHandGrabState::NO_HAND;
 }
 
 void USteeringWheelComponent::UpdateObject(float DeltaTime)

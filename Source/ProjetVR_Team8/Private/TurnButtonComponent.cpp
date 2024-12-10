@@ -21,9 +21,7 @@ UTurnButtonComponent::UTurnButtonComponent()
 void UTurnButtonComponent::BeginPlay()
 {
 	Super::BeginPlay();
-
-	IsOn = false;
-	
+	CanBeUsed = true;	
 }
 
 // Called every frame
@@ -55,7 +53,7 @@ void UTurnButtonComponent::UpdateObject(float DeltaTime)
 {
 	Super::UpdateObject(DeltaTime);
 	
-	if(!CanTurn)
+	if(!CanTurn || !CanBeUsed)
 		return;
 
 	if(MotionControllerComponents.Num() == 0)
@@ -76,6 +74,7 @@ void UTurnButtonComponent::UpdateObject(float DeltaTime)
 	{
 		CanTurn = false;
 		IsOn = !IsOn;
+		OnTurn.Broadcast(IsOn);
 		GEngine->AddOnScreenDebugMessage(
 			-1,
 			3.f,
