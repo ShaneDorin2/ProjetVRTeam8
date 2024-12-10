@@ -31,10 +31,21 @@ public:
 	
 private:
 	void ApplyMovement(FVector direction, float Speed, float DeltaTime);
-
+	
+	UStaticMeshComponent* RoadsideSlot;
+	
 public:
+	UFUNCTION()
+	void SpawnSignToRoadsideSlot();
+
+	UFUNCTION()
+	void ClearRoadsideSlot();
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MovementSpeed = 10;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh* SignMesh;
 };
 
 

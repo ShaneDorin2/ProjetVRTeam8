@@ -2,6 +2,7 @@
 
 #include "SnapGrabComponent.h"
 #include "HandGrabState.h"
+#include "MotionControllerInfo.h"
 
 
 USnapGrabComponent::USnapGrabComponent()
@@ -23,11 +24,11 @@ void USnapGrabComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 }
 
 void USnapGrabComponent::Grab(USceneComponent* Controller, USceneComponent* Hand)
-{
-	if(!MotionControllerComponents.Contains(Controller))
+{	
+	if(MotionControllerComponents.Num() == 0 || !MotionControllerComponents.Contains(Controller))
 		MotionControllerComponents.Add(Controller);
 
-	if(!HandsComponents.Contains(Hand))
+	if(HandsComponents.Num() == 0 || !HandsComponents.Contains(Hand))
 		HandsComponents.Add(Hand);
   
 	Hand->AttachToComponent(TargetObject, FAttachmentTransformRules::KeepWorldTransform);
@@ -46,9 +47,6 @@ void USnapGrabComponent::Ungrab(USceneComponent* Controller, USceneComponent* Ha
 
 void USnapGrabComponent::UpdateObject(float DeltaTime)
 {
-	if(MotionControllerComponents.Num() == 0)
-		return;
-
 	//FVector LeadControllerPosition =  MotionControllerComponents[0]->GetComponentLocation();
 }
 
