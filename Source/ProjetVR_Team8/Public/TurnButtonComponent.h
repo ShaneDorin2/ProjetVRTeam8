@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "SnapGrabComponent.h"
 #include "TurnButtonComponent.generated.h"
-
+struct FMotionControllerInfo;
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class PROJETVR_TEAM8_API UTurnButtonComponent : public USnapGrabComponent
@@ -15,10 +15,18 @@ class PROJETVR_TEAM8_API UTurnButtonComponent : public USnapGrabComponent
 public:
 	// Sets default values for this component's properties
 	UTurnButtonComponent();
+	UPROPERTY()
+	bool IsOn;
 
 protected: 
 	virtual void BeginPlay() override;
 	virtual void UpdateObject(float DeltaTime) override;
+	UPROPERTY()
+	FRotator StartTargetRotation;	
+	UPROPERTY()
+	FRotator StartControllerRotation;
+	UPROPERTY()
+	bool CanTurn; //temp
 public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 							   FActorComponentTickFunction* ThisTickFunction) override;
