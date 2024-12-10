@@ -19,7 +19,7 @@ public:
 	bool IsGrabbedLeft;
 	UPROPERTY(BlueprintReadWrite)
 	bool IsGrabbedRight;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float DriveInputXValue;
 
 protected:
