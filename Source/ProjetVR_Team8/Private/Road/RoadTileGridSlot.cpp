@@ -46,3 +46,13 @@ float ARoadTileGridSlot::GetTileWidth()
 	return CurrentRoadTile->GetComponentsBoundingBox().GetExtent().X *2;
 }
 
+void ARoadTileGridSlot::AddRoadsideObjectToTile()
+{
+	CurrentRoadTile->SpawnSignToRoadsideSlot();
+}
+
+void ARoadTileGridSlot::ClearRoadsideSlotsFromTile()
+{
+	CurrentRoadTile->ClearRoadsideSlot();
+}
+
