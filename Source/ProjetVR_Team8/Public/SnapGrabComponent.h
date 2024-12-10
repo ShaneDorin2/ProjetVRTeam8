@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "SnapGrabComponent.generated.h"
+struct FMotionControllerInfo;
 
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
@@ -16,11 +17,16 @@ public:
 	USnapGrabComponent();
 	UPROPERTY(BlueprintReadWrite)
 	USceneComponent* TargetObject;
+	UPROPERTY(EditAnywhere, meta=(UIMin = "0.0", UIMax = "3.0"))
+	float TurnSensibility = 1.0f;
+	
 protected:
 	TArray<USceneComponent*> MotionControllerComponents;
 	TArray<USceneComponent*> HandsComponents;
 	virtual void BeginPlay() override;
 	void virtual UpdateObject(float DeltaTime);
+	FRotator StartTargetRotation;
+	FVector StartLookAt;
 
 public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,

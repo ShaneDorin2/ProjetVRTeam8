@@ -3,6 +3,9 @@
 
 #include "TurnButtonComponent.h"
 
+#include "MotionControllerInfo.h"
+#include "DynamicMesh/DynamicMesh3.h"
+
 
 // Sets default values for this component's properties
 UTurnButtonComponent::UTurnButtonComponent()
@@ -19,7 +22,7 @@ void UTurnButtonComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
+	IsOn = false;
 	
 }
 
@@ -35,6 +38,11 @@ void UTurnButtonComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 void UTurnButtonComponent::Grab(USceneComponent* Controller, USceneComponent* Hand)
 {
 	Super::Grab(Controller, Hand);
+	if(MotionControllerComponents.Num() == 0)
+		return;
+	StartTargetRotation = TargetObject->GetComponentRotation();
+	StartControllerRotation = MotionControllerComponents[0]->GetComponentRotation();
+	CanTurn = true;
 }
 
 void UTurnButtonComponent::Ungrab(USceneComponent* Controller, USceneComponent* Hand)
@@ -46,5 +54,34 @@ void UTurnButtonComponent::Ungrab(USceneComponent* Controller, USceneComponent* 
 void UTurnButtonComponent::UpdateObject(float DeltaTime)
 {
 	Super::UpdateObject(DeltaTime);
+	
+	if(!CanTurn)
+		return;
+
+	if(MotionControllerComponents.Num() == 0)
+		return;
+
+	FRotator ControllerRotation = MotionControllerComponents[0]->GetComponentRotation();
+
+	FRotator CurrentTargetRotation = TargetObject->GetComponentRotation();
+
+	float DeltaYaw = (ControllerRotation.Yaw - StartControllerRotation.Yaw) - (CurrentTargetRotation.Pitch - StartTargetRotation.Pitch);
+
+	float InPitch = FMath::Clamp(StartTargetRotation.Pitch - DeltaYaw * TurnSensibility, -89, 0);
+
+	TargetObject->SetWorldRotation(FRotator(InPitch, StartTargetRotation.Yaw, StartTargetRotation.Roll));
+
+
+	if((!IsOn && InPitch <= -85) || (IsOn && InPitch >= -5))
+	{
+		CanTurn = false;
+		IsOn = !IsOn;
+		GEngine->AddOnScreenDebugMessage(
+			-1,
+			3.f,
+			FColor::Magenta,
+			FString::Printf(TEXT("Turn Button : %s"), IsOn? TEXT("ON") : TEXT("OFF"))
+		);
+	}
 }
 

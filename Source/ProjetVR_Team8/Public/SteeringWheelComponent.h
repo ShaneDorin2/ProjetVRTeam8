@@ -5,6 +5,7 @@
 #include "Components/ActorComponent.h"
 #include "SteeringWheelComponent.generated.h"
 enum class EHandGrabState : uint8;
+struct FMotionControllerInfo;
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class PROJETVR_TEAM8_API USteeringWheelComponent : public USnapGrabComponent
@@ -13,22 +14,22 @@ class PROJETVR_TEAM8_API USteeringWheelComponent : public USnapGrabComponent
 
 public:
 	USteeringWheelComponent();
-	
-	UPROPERTY(EditAnywhere)
-	float SteeringSpeed;
 
 	UPROPERTY(BlueprintReadWrite)
 	bool IsGrabbedLeft;
 	UPROPERTY(BlueprintReadWrite)
 	bool IsGrabbedRight;
+	UPROPERTY(EditAnywhere)
+	float DriveInputXValue;
 
 protected:
 	UPROPERTY(BlueprintReadOnly)
 	EHandGrabState CurrentHandState;
-	TArray<USceneComponent*> MotionControllerComponents;
 	TArray<USceneComponent*> HandsComponents;
 	virtual void BeginPlay() override;
 	virtual void UpdateObject(float DeltaTime) override;
+	FVector FindLookAt(USceneComponent* controller);
+	FVector FindAverageLookAt();
 
 public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
