@@ -3,7 +3,6 @@
 
 #include "TurnButtonComponent.h"
 
-#include "MotionControllerInfo.h"
 #include "DynamicMesh/DynamicMesh3.h"
 
 

@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "SnapGrabComponent.h"
 #include "TurnButtonComponent.generated.h"
-struct FMotionControllerInfo;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam( FOnTurn, bool, IsOn);
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
