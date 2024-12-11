@@ -53,6 +53,6 @@ void ARoadTileGridSlot::AddRoadsideObjectToTile()
 
 void ARoadTileGridSlot::ClearRoadsideSlotsFromTile()
 {
-	CurrentRoadTile->ClearRoadsideSlot();
+	CurrentRoadTile->ClearAllRoadSlots();
 }
 

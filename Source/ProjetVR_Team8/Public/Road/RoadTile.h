@@ -40,11 +40,11 @@ public:
 	UFUNCTION()
 	void SpawnSignToRoadsideSlot();
 
-	UFUNCTION()
-	void SpawnShadowToShadowSlot();
+	//UFUNCTION()
+	//void SpawnShadowToShadowSlot();
 
-	UFUNCTION()
-	void SpawnDeetToDeerSlot();
+	//UFUNCTION()
+	//void SpawnDeetToDeerSlot();
 
 	UFUNCTION()
 	void ClearAllRoadSlots();
