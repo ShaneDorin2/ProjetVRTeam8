@@ -1,6 +1,7 @@
 #include "EventManager.h"
 #include "EventManager/EventManager.h"
 #include "EventManager/EventManagerSubSystem.h"
+#include "EventManager/GameManager.h"
 #include "EventManager/SequenceEventData.h"
 
 
@@ -36,7 +37,8 @@ void AEventManager::Tick(float DeltaTime)
 			}
 			else
 			{
-				//DIE
+				GetWorld()->GetSubsystem<UGameManager>()->OnDie.Broadcast();
+
 				GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Red, FString::Printf(TEXT("DIED")));
 			}
 
