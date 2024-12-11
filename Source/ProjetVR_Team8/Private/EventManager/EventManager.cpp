@@ -69,17 +69,18 @@ void AEventManager::Tick(float DeltaTime)
 					GetWorld()->GetSubsystem<UEventManagerSubSystem>()->OnRadioBugEvent.Broadcast();
 					break;
 				
-				case RoadAppearance:
-					GetWorld()->GetSubsystem<UEventManagerSubSystem>()->OnRoadAppearanceEvent.Broadcast();
-					break;
-				
 				case RoadTurn:
 					GetWorld()->GetSubsystem<UEventManagerSubSystem>()->OnRoadTurnEvent.Broadcast();
 					break;
 				
 				case CarTalk:
-					UEventInfoCarTalk* CarTalkEvent = Cast<UEventInfoCarTalk>(Events[i]);
-					GetWorld()->GetSubsystem<UEventManagerSubSystem>()->OnCarTalkEvent.Broadcast(CarTalkEvent->CarTalkSound);
+					//UEventInfoCarTalk* CarTalkEvent = Cast<UEventInfoCarTalk>(Events[i]);
+					GetWorld()->GetSubsystem<UEventManagerSubSystem>()->OnCarTalkEvent.Broadcast(Cast<UEventInfoCarTalk>(Events[i])->CarTalkSound);
+					break;
+
+				case RoadAppearance:
+					//UEventRoadAppearance* RoadAppearance = Cast<UEventRoadAppearance>(Events[i]);
+					GetWorld()->GetSubsystem<UEventManagerSubSystem>()->OnRoadAppearanceEvent.Broadcast(Cast<UEventRoadAppearance>(Events[i])->RoadAppearanceType);
 					break;
 			}
 
