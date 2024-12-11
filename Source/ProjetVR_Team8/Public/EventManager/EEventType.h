@@ -13,6 +13,6 @@ enum EEventType
 	CarTalk = 5,
 	StopCar = 6,
 	RadioStateChange = 7,
-	Silhouette = 8,
+	SilhouetteTocToc = 8,
 	Sound = 9
 };

@@ -91,7 +91,7 @@ void AEventManager::Tick(float DeltaTime)
 					GetWorld()->GetSubsystem<UEventManagerSubSystem>()->OnRadioStateChange.Broadcast(Cast<UEventRadioStateChange>(Events[i])->IsOn);
 					break;
 				
-				case EEventType::Silhouette:
+				case SilhouetteTocToc:
 					GetWorld()->GetSubsystem<UEventManagerSubSystem>()->OnSilhouette.Broadcast();
 					break;
 				

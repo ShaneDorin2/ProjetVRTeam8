@@ -10,7 +10,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FEventManager_UnlockDoors);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FEventManager_LightFlicker);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FEventManager_RadioBug);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FEventManager_RoadTurn);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FEventManager_Silhouette);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FEventManager_SilhouetteTocToc);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FEventManager_Sound);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FEventManager_RoadAppearance, ERoadAppearanceType, RoadAppearanceType);
@@ -54,7 +54,7 @@ public:
 	FEventManager_StopCar OnCarStop;
 
 	UPROPERTY(BlueprintAssignable)
-	FEventManager_Silhouette OnSilhouette;
+	FEventManager_SilhouetteTocToc OnSilhouette;
 
 	UPROPERTY(BlueprintAssignable)
 	FEventManager_Sound OnSound;
