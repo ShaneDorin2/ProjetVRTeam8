@@ -53,19 +53,31 @@ void ARoadTile::ApplyMovement(FVector direction, float Speed, float DeltaTime)
 
 void ARoadTile::SpawnSignToRoadsideSlot()
 {
-	if (RoadsideSlot == nullptr)
-	{
-		return;
-	}
+	if (RoadsideSlot == nullptr) return;
 	RoadsideSlot->SetStaticMesh(SignMesh);
+}
+
+void ARoadTile::SpawnShadowToShadowSlot()
+{
+	if (ShadowSlot == nullptr) return;
+	ShadowSlot->SetStaticMesh(ShadowMesh);
+}
+
+void ARoadTile::SpawnDeetToDeerSlot()
+{
+	if (DeerSlot == nullptr) return;
+	DeerSlot->SetStaticMesh(DeetMesh);
 }
 
 void ARoadTile::ClearAllRoadSlots()
 {
-	if (RoadsideSlot == nullptr)
-	{
-		return;
-	}
+	if (RoadsideSlot == nullptr) return;
 	RoadsideSlot->SetStaticMesh(nullptr);
+	
+	if (ShadowSlot == nullptr) return;
+	ShadowSlot->SetStaticMesh(nullptr);
+	
+	if (DeerSlot == nullptr) return;
+	DeerSlot->SetStaticMesh(nullptr);
 }
 

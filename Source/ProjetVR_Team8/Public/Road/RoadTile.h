@@ -40,11 +40,11 @@ public:
 	UFUNCTION()
 	void SpawnSignToRoadsideSlot();
 
-	//UFUNCTION()
-	//void SpawnShadowToShadowSlot();
+	UFUNCTION()
+	void SpawnShadowToShadowSlot();
 
-	//UFUNCTION()
-	//void SpawnDeetToDeerSlot();
+	UFUNCTION()
+	void SpawnDeetToDeerSlot();
 
 	UFUNCTION()
 	void ClearAllRoadSlots();
@@ -54,6 +54,12 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UStaticMesh* SignMesh;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh* ShadowMesh;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh* DeetMesh;
 };
 
 
