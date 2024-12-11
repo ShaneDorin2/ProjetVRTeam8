@@ -30,9 +30,9 @@ void ARoadTile::BeginPlay()
 		{
 			ShadowSlot = Cast<UStaticMeshComponent>(Component);
 		}
-		if (Component->GetName() == "RoadsideObjectStaticMesh")
+		if (Component->GetName() == "DeerObjectStaticMesh")
 		{
-			RoadsideSlot = Cast<UStaticMeshComponent>(Component);
+			DeerSlot = Cast<UStaticMeshComponent>(Component);
 		}
 	}
 }
@@ -63,10 +63,10 @@ void ARoadTile::SpawnShadowToShadowSlot()
 	ShadowSlot->SetStaticMesh(ShadowMesh);
 }
 
-void ARoadTile::SpawnDeetToDeerSlot()
+void ARoadTile::SpawnDeerToDeerSlot()
 {
 	if (DeerSlot == nullptr) return;
-	DeerSlot->SetStaticMesh(DeetMesh);
+	DeerSlot->SetStaticMesh(DeerMesh);
 }
 
 void ARoadTile::ClearAllRoadSlots()

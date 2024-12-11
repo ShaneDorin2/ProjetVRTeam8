@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "RoadTile.h"
+#include "EventManager/EventEnums.h"
 #include "GameFramework/Actor.h"
 #include "RoadTileGrid.generated.h"
 
@@ -37,8 +38,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MovementSpeed = 10;
 
-	UFUNCTION(BlueprintCallable)
-	void QueueRoadsideSign();
 	
 private:
 
@@ -66,7 +65,15 @@ private:
 
 #pragma region Spawn Object on RoadTile
 
-	bool RoadsideSignHasBeenQueued = false;
+public:
+	
+	UFUNCTION(BlueprintCallable)
+	void QueueNewRoadsideObject(ERoadAppearanceType ObjectType);
+
+private:
+	//bool RoadsideSignHasBeenQueued = false;
+
+	TQueue<ERoadAppearanceType> RoadsideObjectQueue;
 
 	void AddRoadsideObjects(ARoadTileGridSlot* TileSlot);
 

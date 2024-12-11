@@ -9,7 +9,7 @@ enum ECarSoundType
 	Right
 };
 
-UENUM()
+UENUM(BlueprintType)
 enum ERoadAppearanceType
 {
 	NormalSign = 0,

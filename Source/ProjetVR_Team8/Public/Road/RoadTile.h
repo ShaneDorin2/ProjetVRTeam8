@@ -44,7 +44,7 @@ public:
 	void SpawnShadowToShadowSlot();
 
 	UFUNCTION()
-	void SpawnDeetToDeerSlot();
+	void SpawnDeerToDeerSlot();
 
 	UFUNCTION()
 	void ClearAllRoadSlots();
@@ -59,7 +59,7 @@ public:
 	UStaticMesh* ShadowMesh;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UStaticMesh* DeetMesh;
+	UStaticMesh* DeerMesh;
 };
 
 

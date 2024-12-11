@@ -46,9 +46,19 @@ float ARoadTileGridSlot::GetTileWidth()
 	return CurrentRoadTile->GetComponentsBoundingBox().GetExtent().X *2;
 }
 
-void ARoadTileGridSlot::AddRoadsideObjectToTile()
+void ARoadTileGridSlot::AddSignToTile()
 {
 	CurrentRoadTile->SpawnSignToRoadsideSlot();
+}
+
+void ARoadTileGridSlot::AddShadowToTile()
+{
+	CurrentRoadTile->SpawnShadowToShadowSlot();
+}
+
+void ARoadTileGridSlot::AddDeerToTile()
+{
+	CurrentRoadTile->SpawnDeerToDeerSlot();
 }
 
 void ARoadTileGridSlot::ClearRoadsideSlotsFromTile()
