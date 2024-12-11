@@ -54,6 +54,11 @@ UCLASS()
 class UEventRoadAppearance : public UEventInfoClass
 {
 	GENERATED_BODY()
+	
+public :
+	UPROPERTY(EditAnywhere, Category="Event")
+	TEnumAsByte<ERoadAppearanceType> RoadAppearanceType;
+	
 	UEventRoadAppearance()
 	{
 		EventType = TEnumAsByte<EEventType>(3);
