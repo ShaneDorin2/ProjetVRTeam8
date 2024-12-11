@@ -33,13 +33,21 @@ private:
 	void ApplyMovement(FVector direction, float Speed, float DeltaTime);
 	
 	UStaticMeshComponent* RoadsideSlot;
+	UStaticMeshComponent* ShadowSlot;
+	UStaticMeshComponent* DeerSlot;
 	
 public:
 	UFUNCTION()
 	void SpawnSignToRoadsideSlot();
 
 	UFUNCTION()
-	void ClearRoadsideSlot();
+	void SpawnShadowToShadowSlot();
+
+	UFUNCTION()
+	void SpawnDeetToDeerSlot();
+
+	UFUNCTION()
+	void ClearAllRoadSlots();
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MovementSpeed = 10;

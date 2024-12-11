@@ -26,6 +26,14 @@ void ARoadTile::BeginPlay()
 		{
 			RoadsideSlot = Cast<UStaticMeshComponent>(Component);
 		}
+		if (Component->GetName() == "ShadowObjectStaticMesh")
+		{
+			ShadowSlot = Cast<UStaticMeshComponent>(Component);
+		}
+		if (Component->GetName() == "RoadsideObjectStaticMesh")
+		{
+			RoadsideSlot = Cast<UStaticMeshComponent>(Component);
+		}
 	}
 }
 
@@ -52,7 +60,7 @@ void ARoadTile::SpawnSignToRoadsideSlot()
 	RoadsideSlot->SetStaticMesh(SignMesh);
 }
 
-void ARoadTile::ClearRoadsideSlot()
+void ARoadTile::ClearAllRoadSlots()
 {
 	if (RoadsideSlot == nullptr)
 	{
