@@ -82,6 +82,22 @@ void AEventManager::Tick(float DeltaTime)
 					//UEventRoadAppearance* RoadAppearance = Cast<UEventRoadAppearance>(Events[i]);
 					GetWorld()->GetSubsystem<UEventManagerSubSystem>()->OnRoadAppearanceEvent.Broadcast(Cast<UEventRoadAppearance>(Events[i])->RoadAppearanceType);
 					break;
+				
+				case StopCar:
+					GetWorld()->GetSubsystem<UEventManagerSubSystem>()->OnCarStop.Broadcast();
+					break;
+
+				case RadioStateChange:
+					GetWorld()->GetSubsystem<UEventManagerSubSystem>()->OnRadioStateChange.Broadcast(Cast<UEventRadioStateChange>(Events[i])->IsOn);
+					break;
+				
+				case EEventType::Silhouette:
+					GetWorld()->GetSubsystem<UEventManagerSubSystem>()->OnSilhouette.Broadcast();
+					break;
+				
+				case Sound:
+					GetWorld()->GetSubsystem<UEventManagerSubSystem>()->OnSound.Broadcast();
+					break;
 			}
 
 			Events.RemoveAt(i);

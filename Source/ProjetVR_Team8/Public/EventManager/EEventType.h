@@ -10,5 +10,9 @@ enum EEventType
 	RadioBug = 2,
 	RoadAppearance = 3,
 	RoadTurn = 4,
-	CarTalk = 5
+	CarTalk = 5,
+	StopCar = 6,
+	RadioStateChange = 7,
+	Silhouette = 8,
+	Sound = 9
 };

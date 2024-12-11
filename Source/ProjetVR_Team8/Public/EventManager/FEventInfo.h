@@ -90,4 +90,47 @@ public:
 	}
 };
 
+UCLASS()
+class UEventStopCar : public UEventInfoClass
+{
+	GENERATED_BODY()
+	UEventStopCar()
+	{
+		EventType = TEnumAsByte<EEventType>(6);
+	}
+};
+
+UCLASS()
+class UEventRadioStateChange : public UEventInfoClass
+{
+	GENERATED_BODY()
+public:
+	bool IsOn;
+	
+	UEventRadioStateChange()
+	{
+		EventType = TEnumAsByte<EEventType>(7);
+	}
+};
+
+UCLASS()
+class UEventSilhouette : public UEventInfoClass
+{
+	GENERATED_BODY()
+	UEventSilhouette()
+	{
+		EventType = TEnumAsByte<EEventType>(8);
+	}
+};
+
+UCLASS()
+class UEventSound : public UEventInfoClass
+{
+	GENERATED_BODY()
+	UEventSound()
+	{
+		EventType = TEnumAsByte<EEventType>(9);
+	}
+};
+
 #pragma endregion
