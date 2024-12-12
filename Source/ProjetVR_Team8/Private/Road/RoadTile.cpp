@@ -25,6 +25,14 @@ void ARoadTile::BeginPlay()
 		{
 			RoadsideSlot = Cast<UStaticMeshComponent>(Component);
 		}
+		if (Component->GetName() == "ShadowObjectStaticMesh")
+		{
+			ShadowSlot = Cast<UStaticMeshComponent>(Component);
+		}
+		if (Component->GetName() == "DeerObjectStaticMesh")
+		{
+			DeerSlot = Cast<UStaticMeshComponent>(Component);
+		}
 	}
 }
 
@@ -32,7 +40,17 @@ void ARoadTile::BeginPlay()
 void ARoadTile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	if (DeerMoving)
+	{
+		if (DeerMovingCountDown > 0)
+		{
+			DeerMovingCountDown -= DeltaTime;
+		}
+		else
+		{
+			DeerSlot->SetRelativeLocation(FVector(DeerSlot->GetRelativeLocation() + FVector(0, 1, 0) * DeerSpeed * DeltaTime));
+		}
+	}
 }
 
 void ARoadTile::ApplyMovement(FVector direction, float Speed, float DeltaTime)
@@ -44,19 +62,39 @@ void ARoadTile::ApplyMovement(FVector direction, float Speed, float DeltaTime)
 
 void ARoadTile::SpawnSignToRoadsideSlot()
 {
-	if (RoadsideSlot == nullptr)
-	{
-		return;
-	}
+	if (RoadsideSlot == nullptr) return;
 	RoadsideSlot->SetStaticMesh(SignMesh);
 }
 
-void ARoadTile::ClearRoadsideSlot()
+void ARoadTile::SpawnScarySignToRoadsideSlot()
 {
-	if (RoadsideSlot == nullptr)
-	{
-		return;
-	}
+	if (RoadsideSlot == nullptr) return;
+	RoadsideSlot->SetStaticMesh(ScarySignMesh);
+}
+
+void ARoadTile::SpawnShadowToShadowSlot()
+{
+	if (ShadowSlot == nullptr) return;
+	ShadowSlot->SetStaticMesh(ShadowMesh);
+}
+
+void ARoadTile::SpawnDeerToDeerSlot()
+{
+	if (DeerSlot == nullptr) return;
+	DeerSlot->SetStaticMesh(DeerMesh);
+	DeerMoving = true;
+	DeerMovingCountDown = DeerDelayDuration;
+}
+
+void ARoadTile::ClearAllRoadSlots()
+{
+	if (RoadsideSlot == nullptr) return;
 	RoadsideSlot->SetStaticMesh(nullptr);
+	
+	if (ShadowSlot == nullptr) return;
+	ShadowSlot->SetStaticMesh(nullptr);
+	
+	if (DeerSlot == nullptr) return;
+	DeerSlot->SetStaticMesh(nullptr);
 }
 

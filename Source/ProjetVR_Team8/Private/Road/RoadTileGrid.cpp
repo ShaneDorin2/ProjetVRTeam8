@@ -38,11 +38,6 @@ void ARoadTileGrid::Tick(float DeltaTime)
 	}
 }
 
-void ARoadTileGrid::QueueRoadsideSign()
-{
-	RoadsideSignHasBeenQueued = true;
-}
-
 void ARoadTileGrid::InitRoadTileGridSlots()
 {
 	for (int i=0; i<3; i++)
@@ -111,13 +106,32 @@ FVector ARoadTileGrid::GetNewSlotLocation()
 	return RoadTileGridSlots[PrimeSlotIndex]->GetActorLocation() - MovementDirection * TileWidth; 
 }
 
+void ARoadTileGrid::QueueNewRoadsideObject(ERoadAppearanceType ObjectType)
+{
+	RoadsideObjectQueue.Enqueue(ObjectType);
+}
+
 void ARoadTileGrid::AddRoadsideObjects(ARoadTileGridSlot* TileSlot)
 {
 	TileSlot->ClearRoadsideSlotsFromTile();
-	if (RoadsideSignHasBeenQueued)
+	if (RoadsideObjectQueue.IsEmpty()) return;
+
+	ERoadAppearanceType Type;
+	RoadsideObjectQueue.Dequeue(Type);
+	switch (Type)
 	{
-		TileSlot->AddRoadsideObjectToTile();
-		RoadsideSignHasBeenQueued = false;
+	case ERoadAppearanceType::NormalSign:
+		TileSlot->AddSignToTile();
+		return;
+	case ERoadAppearanceType::WeirdSign:
+		TileSlot->AddScarySignToTile();
+		return;
+	case ERoadAppearanceType::Silhouette:
+		TileSlot->AddShadowToTile();
+		return;
+	case ERoadAppearanceType::Cerf:
+		TileSlot->AddDeerToTile();
+		
 	}
 }
 

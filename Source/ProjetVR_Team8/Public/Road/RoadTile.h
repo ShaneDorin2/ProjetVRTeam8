@@ -27,25 +27,55 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 
+
 #pragma endregion
 	
 private:
 	void ApplyMovement(FVector direction, float Speed, float DeltaTime);
 	
 	UStaticMeshComponent* RoadsideSlot;
+	UStaticMeshComponent* ShadowSlot;
+	UStaticMeshComponent* DeerSlot;
+
+	bool DeerMoving = false;
+	float DeerMovingCountDown; 
 	
 public:
 	UFUNCTION()
 	void SpawnSignToRoadsideSlot();
 
 	UFUNCTION()
-	void ClearRoadsideSlot();
+	void SpawnScarySignToRoadsideSlot();
+
+	UFUNCTION()
+	void SpawnShadowToShadowSlot();
+
+	UFUNCTION()
+	void SpawnDeerToDeerSlot();
+
+	UFUNCTION()
+	void ClearAllRoadSlots();
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MovementSpeed = 10;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UStaticMesh* SignMesh;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh* ScarySignMesh;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh* ShadowMesh;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh* DeerMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float DeerDelayDuration = 0.5;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float DeerSpeed = 10;
 };
 
 

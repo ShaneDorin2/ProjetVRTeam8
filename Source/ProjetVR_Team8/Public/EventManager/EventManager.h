@@ -25,9 +25,14 @@ protected:
 	
 	TArray<TObjectPtr<UEventInfoClass>> Events;
 
+	UFUNCTION()
+	void SetActivation(bool Activation);
+
 public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
+	bool IsActivated;
 
 private:
 	float TimeElapsed;
