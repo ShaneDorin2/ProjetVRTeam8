@@ -17,11 +17,17 @@ void AEventManager::BeginPlay()
 	Super::BeginPlay();
 	ChangeTimeline(TimelineA);
 	GetWorld()->GetSubsystem<UEventManagerSubSystem>()->OnRebootEvent.AddDynamic(this, &AEventManager::OnReboot);
+	GetWorld()->GetSubsystem<UEventManagerSubSystem>()->ActivationManager.AddDynamic(this, &AEventManager::SetActivation);
 }
 
 void AEventManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	if (!IsActivated)
+	{
+		return;
+	}
+	
 	TimeElapsed += DeltaTime;
 	CurrentTimelineElapsed += DeltaTime;
 
@@ -112,6 +118,11 @@ void AEventManager::ChangeTimeline(USequenceEventData* NewTimeline)
 	
 	CurrentTimelineElapsed = 0;
 	CurrentTimeline = NewTimeline;
+}
+
+void AEventManager::SetActivation(bool Activation)
+{
+	IsActivated = Activation;
 }
 
 void AEventManager::OnReboot()
