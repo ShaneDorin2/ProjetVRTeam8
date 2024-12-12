@@ -39,7 +39,16 @@ public:
 	float GetTileWidth();
 
 	UFUNCTION()
-	void AddRoadsideObjectToTile();
+	void AddSignToTile();
+
+	UFUNCTION()
+	void AddScarySignToTile();
+
+	UFUNCTION()
+	void AddShadowToTile();
+
+	UFUNCTION()
+	void AddDeerToTile();
 
 	UFUNCTION()
 	void ClearRoadsideSlotsFromTile();
