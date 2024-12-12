@@ -46,7 +46,7 @@ void ARoadTileGrid::InitRoadTileGridSlots()
 		SpawnParameters.Owner = this;
 		SpawnParameters.Instigator = GetInstigator();
 
-		ARoadTileGridSlot* RoadTileGridSlot = GetWorld()->SpawnActor<ARoadTileGridSlot>(RoadTileGridSlotBP, SpawnParameters);
+		ARoadTileGridSlot* RoadTileGridSlot = GetWorld()->SpawnActor<ARoadTileGridSlot>(RoadTileGridSlotBP, SpawnParameters);//é-è
 		RoadTileGridSlot->AttachToActor(this,FAttachmentTransformRules::KeepRelativeTransform);
 		RoadTileGridSlots.Add(RoadTileGridSlot);
 		SlotIndexQueue->Enqueue(i);
