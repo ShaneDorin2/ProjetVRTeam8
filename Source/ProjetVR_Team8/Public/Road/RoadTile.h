@@ -35,6 +35,9 @@ private:
 	UStaticMeshComponent* RoadsideSlot;
 	UStaticMeshComponent* ShadowSlot;
 	UStaticMeshComponent* DeerSlot;
+
+	bool DeerMoving = false;
+	float DeerMovingCountDown; 
 	
 public:
 	UFUNCTION()
@@ -60,6 +63,12 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UStaticMesh* DeerMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float DeerDelayDuration = 0.5;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float DeerSpeed = 10;
 };
 
 

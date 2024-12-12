@@ -41,7 +41,17 @@ void ARoadTile::BeginPlay()
 void ARoadTile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	if (DeerMoving)
+	{
+		if (DeerMovingCountDown > 0)
+		{
+			DeerMovingCountDown -= DeltaTime;
+		}
+		else
+		{
+			DeerSlot->SetRelativeLocation(FVector(DeerSlot->GetRelativeLocation() + FVector(0, 1, 0) * DeerSpeed * DeltaTime));
+		}
+	}
 }
 
 void ARoadTile::ApplyMovement(FVector direction, float Speed, float DeltaTime)
@@ -67,6 +77,8 @@ void ARoadTile::SpawnDeerToDeerSlot()
 {
 	if (DeerSlot == nullptr) return;
 	DeerSlot->SetStaticMesh(DeerMesh);
+	DeerMoving = true;
+	DeerMovingCountDown = DeerDelayDuration;
 }
 
 void ARoadTile::ClearAllRoadSlots()
