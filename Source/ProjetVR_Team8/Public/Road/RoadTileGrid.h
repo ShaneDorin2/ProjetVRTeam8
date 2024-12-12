@@ -9,6 +9,7 @@
 #include "RoadTileGrid.generated.h"
 
 class ARoadTileGridSlot;
+class UGameManager;
 
 UCLASS()
 class PROJETVR_TEAM8_API ARoadTileGrid : public AActor
@@ -62,6 +63,8 @@ private:
 	float TileWidth;
 	
 	FVector MovementDirection = FVector(1, 0, 0);
+
+	UGameManager* GameManager;
 
 #pragma region Spawn Object on RoadTile
 

@@ -13,6 +13,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FEventManager_RoadAppearance, ERoadA
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FEventManager_CarTalk, ECarSoundType, CarTalkSound);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FEventManager_Reboot);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FEventManager_CarStop);
 
 UCLASS()
 class PROJETVR_TEAM8_API UEventManagerSubSystem : public UWorldSubsystem
@@ -40,4 +41,7 @@ public:
 
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
 	FEventManager_Reboot OnRebootEvent;
+
+	UPROPERTY(BlueprintAssignable)
+	FEventManager_CarStop OnCarStopEvent;
 };

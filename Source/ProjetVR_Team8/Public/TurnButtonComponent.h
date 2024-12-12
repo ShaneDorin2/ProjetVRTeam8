@@ -5,8 +5,8 @@
 #include "CoreMinimal.h"
 #include "SnapGrabComponent.h"
 #include "TurnButtonComponent.generated.h"
-struct FMotionControllerInfo;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam( FOnTurn, bool, IsOn);
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class PROJETVR_TEAM8_API UTurnButtonComponent : public USnapGrabComponent
 {
@@ -15,12 +15,17 @@ class PROJETVR_TEAM8_API UTurnButtonComponent : public USnapGrabComponent
 public:
 	// Sets default values for this component's properties
 	UTurnButtonComponent();
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	bool IsOn;
+
+	UPROPERTY(BlueprintAssignable, Category="Clickable")
+	FOnTurn OnTurn;
 
 protected: 
 	virtual void BeginPlay() override;
 	virtual void UpdateObject(float DeltaTime) override;
+	UPROPERTY(BlueprintReadWrite)
+	bool CanBeUsed; 
 	UPROPERTY()
 	FRotator StartTargetRotation;	
 	UPROPERTY()

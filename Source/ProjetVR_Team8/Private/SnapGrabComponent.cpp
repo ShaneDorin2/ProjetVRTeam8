@@ -2,7 +2,6 @@
 
 #include "SnapGrabComponent.h"
 #include "HandGrabState.h"
-#include "MotionControllerInfo.h"
 
 
 USnapGrabComponent::USnapGrabComponent()

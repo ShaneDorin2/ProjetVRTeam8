@@ -4,6 +4,7 @@
 #include "Road/RoadTileGrid.h"
 
 #include "MaterialHLSLTree.h"
+#include "EventManager/GameManager.h"
 #include "Road/RoadTile.h"
 #include "Road/RoadTileGridSlot.h"
 
@@ -19,6 +20,8 @@ ARoadTileGrid::ARoadTileGrid()
 void ARoadTileGrid::BeginPlay()
 {
 	Super::BeginPlay();
+	GameManager = GetWorld()->GetSubsystem<UGameManager>();
+	
 	InitRoadTileGridSlots();
 	
 }
@@ -58,6 +61,8 @@ void ARoadTileGrid::InitRoadTileGridSlots()
 
 void ARoadTileGrid::UpdateSlotPositions(float DeltaTime)
 {
+	if(!GameManager->IsCarStarted)
+		return;
 	for (ARoadTileGridSlot* Slot : RoadTileGridSlots)
 	{
 		Slot->SetActorLocation(FVector(Slot->GetActorLocation() + MovementDirection * MovementSpeed * DeltaTime));

@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "SnapGrabComponent.generated.h"
-struct FMotionControllerInfo;
 
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
