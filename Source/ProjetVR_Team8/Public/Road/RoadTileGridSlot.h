@@ -42,6 +42,9 @@ public:
 	void AddSignToTile();
 
 	UFUNCTION()
+	void AddScarySignToTile();
+
+	UFUNCTION()
 	void AddShadowToTile();
 
 	UFUNCTION()

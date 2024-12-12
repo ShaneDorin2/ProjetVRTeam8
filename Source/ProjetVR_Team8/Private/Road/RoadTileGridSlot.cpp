@@ -51,6 +51,11 @@ void ARoadTileGridSlot::AddSignToTile()
 	CurrentRoadTile->SpawnSignToRoadsideSlot();
 }
 
+void ARoadTileGridSlot::AddScarySignToTile()
+{
+	CurrentRoadTile->SpawnScarySignToRoadsideSlot();
+}
+
 void ARoadTileGridSlot::AddShadowToTile()
 {
 	CurrentRoadTile->SpawnShadowToShadowSlot();

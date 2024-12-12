@@ -27,6 +27,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 
+
 #pragma endregion
 	
 private:
@@ -44,6 +45,9 @@ public:
 	void SpawnSignToRoadsideSlot();
 
 	UFUNCTION()
+	void SpawnScarySignToRoadsideSlot();
+
+	UFUNCTION()
 	void SpawnShadowToShadowSlot();
 
 	UFUNCTION()
@@ -57,6 +61,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UStaticMesh* SignMesh;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh* ScarySignMesh;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UStaticMesh* ShadowMesh;

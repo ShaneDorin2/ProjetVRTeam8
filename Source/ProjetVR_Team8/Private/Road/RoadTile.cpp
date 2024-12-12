@@ -66,6 +66,12 @@ void ARoadTile::SpawnSignToRoadsideSlot()
 	RoadsideSlot->SetStaticMesh(SignMesh);
 }
 
+void ARoadTile::SpawnScarySignToRoadsideSlot()
+{
+	if (RoadsideSlot == nullptr) return;
+	RoadsideSlot->SetStaticMesh(ScarySignMesh);
+}
+
 void ARoadTile::SpawnShadowToShadowSlot()
 {
 	if (ShadowSlot == nullptr) return;

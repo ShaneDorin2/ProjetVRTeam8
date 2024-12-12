@@ -124,7 +124,7 @@ void ARoadTileGrid::AddRoadsideObjects(ARoadTileGridSlot* TileSlot)
 		TileSlot->AddSignToTile();
 		return;
 	case ERoadAppearanceType::WeirdSign:
-		TileSlot->AddSignToTile();
+		TileSlot->AddScarySignToTile();
 		return;
 	case ERoadAppearanceType::Silhouette:
 		TileSlot->AddShadowToTile();
